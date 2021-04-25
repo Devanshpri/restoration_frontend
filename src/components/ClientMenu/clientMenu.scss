@@ -1,0 +1,35 @@
+
+.day-item {
+    width: 800px;
+    //border: 2px solid #4b4b5a;
+}
+
+.food-list {
+    width: 30%;
+    text-align: center;
+
+    .card-header {
+        background-color: #2bb884;
+        max-height: 60px;
+
+        h3 {
+            color: white;
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        transform: translateX(-10%);
+    }
+}
+
+.check-food-list {
+    width: 80%;
+    text-align: center;
+    border: 2px solid grey;
+    margin: auto;
+}
+
+.daily-list-container {
+    //background-color: whitesmoke;
+}
