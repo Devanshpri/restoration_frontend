@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Axios from "axios";
 import { Button, Modal, Form } from "react-bootstrap";
 import { Row, Col, Card, CardBody, Input } from "reactstrap";
@@ -82,6 +82,13 @@ const AllClients = () => {
     setdeleteModal(false);
   };
 
+  const fileInput = useRef(null);
+
+
+  const handleFileChange = (event) => {
+    console.log("Make something");
+  };
+
   let languageOptions = [
     "Choose",
     "NA",
@@ -100,9 +107,15 @@ const AllClients = () => {
   };
 
   const editFormatter = function () {
-
-    return <Button type="button" className="btn " style={{ backgroundColor: "#636e72", border: "1px solid #636e72" }}>Edit</Button>;
-
+    return (
+      <Button
+        type="button"
+        className="btn "
+        style={{ backgroundColor: "#636e72", border: "1px solid #636e72" }}
+      >
+        Edit
+      </Button>
+    );
   };
 
   const columns = [
@@ -404,16 +417,16 @@ const AllClients = () => {
   };
 
   const showOnline = () => {
-    console.log("online>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    console.log("online>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     setonline(true);
   };
   const showoffline = () => {
-    console.log("offline")
+    console.log("offline");
     setonline(false);
   };
   const hello = () => {
-    console.log("hello")
-  }
+    console.log("hello");
+  };
 
   const submitCoach = async () => {
     await Axios.post(
@@ -461,7 +474,7 @@ const AllClients = () => {
       //   ...formData,isOnlineClient:false
       // });
       // await Axios.post(`http://localhost:8000/api/sAdmin/newClient`, {
-        await Axios.post(`${process.env.REACT_APP_API_URL}/sAdmin/newClient`, {
+      await Axios.post(`${process.env.REACT_APP_API_URL}/sAdmin/newClient`, {
         ...formData,
         isOnlineClient: online,
       });
@@ -492,7 +505,7 @@ const AllClients = () => {
             className={online ? "btn btn-success" : "btn btn-light"}
           >
             Online
-            </ExportCSVButton>
+          </ExportCSVButton>
           <ExportCSVButton
             // {...props.csvProps}
             // type="button" className="btn " style={{ backgroundColor: "#636e72" }}
@@ -500,15 +513,16 @@ const AllClients = () => {
             className={online ? "btn btn-light" : "btn btn-success"}
           >
             Offline
-            </ExportCSVButton>
+          </ExportCSVButton>
         </Col>
 
         <Col className="text-right" style={{ marginTop: -15 }}>
-
-          <ExportCSVButton className="btn btn-success" onClick={handleShowClients}>
+          <ExportCSVButton
+            className="btn btn-success"
+            onClick={handleShowClients}
+          >
             {online ? "New Online Client" : "New Offline Client"}
           </ExportCSVButton>
-
         </Col>
       </Row>
       <Row>
@@ -747,29 +761,40 @@ const AllClients = () => {
                   />
                 </Col>
               </Row>
-              {/* <div>
-                <Row>
-                  <Col>
-                    <Form.Label>Is Patient</Form.Label>
-                    <Form.Control
-                      value={formData.isPatient}
-                      as="select"
-                      name="isPatient"
-                      onChange={handleFormData}
-                    >
-                      <option>Choose..</option>
-                      <option value={true}>Yes</option>
-                      <option value={false}>No</option>
-                    </Form.Control>
-                  </Col>
-                </Row>
-              </div> */}
+
+              <Row>
+                <Col>
+                  <Form.Label>
+                    Attach ID
+                  </Form.Label>
+                  <div
+                    style={{
+                      // alignSelf: "center",
+                      // textAlignLast: "left",
+                      // marginRight: "25px",
+                      border: "1px solid lightgrey",
+                      width: "184px",
+                      borderRadius: "5px"
+                    }}
+                  >
+                    <input
+                      style={{ paddingTop: "4px", paddingBottom: "4px", paddingLeft: "1px" }}
+                      type="file"
+                      onChange={(e) => handleFileChange(e)}
+                      ref={fileInput}
+                    />
+                    {/* <div style={{marginLeft: "80px"}} onClick={() => handleClick()}></div> */}
+                  </div>
+                </Col>
+              </Row>
             </Form.Row>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-
-          <Button style={{ backgroundColor: "#636e72", border: "1px solid #636e72" }} onClick={handleCloseCommon}>
+          <Button
+            style={{ backgroundColor: "#636e72", border: "1px solid #636e72" }}
+            onClick={handleCloseCommon}
+          >
             Cancel
           </Button>
           <Button variant="success" onClick={submitForm}>
@@ -815,7 +840,13 @@ const AllClients = () => {
             </Modal.Body>
             {/* {(()=>{ setisClickOnDelete(false)} )()} */}
             <Modal.Footer>
-              <Button style={{ backgroundColor: "#636e72", border: "1px solid #636e72" }} onClick={handleDeleteModal}>
+              <Button
+                style={{
+                  backgroundColor: "#636e72",
+                  border: "1px solid #636e72",
+                }}
+                onClick={handleDeleteModal}
+              >
                 Cancel
               </Button>
               <Button variant="success" onClick={deleteThis}>

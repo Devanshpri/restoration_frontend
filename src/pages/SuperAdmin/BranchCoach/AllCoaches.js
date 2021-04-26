@@ -399,7 +399,7 @@ const AllCoaches = () => {
                       onChange={handleFormData}
                     />
                   </Col>
-                  <Col style={{ marginLeft: "74px" }}>
+                  <Col style={{ marginLeft: "54px" }}>
                     <Form.Label>Education Qualification</Form.Label>
                     <Form.Control
                       value={formData.eduQual}
@@ -433,7 +433,7 @@ const AllCoaches = () => {
                       <option>Other</option>
                     </Form.Control>
                   </Col>
-                  <Col style={{ marginLeft: "42px" }}>
+                  <Col style={{ marginLeft: "30px" }}>
                     <Form.Label style={{width: "157px"}}>Gender</Form.Label>
                     <Form.Control
                       value={formData.gender}
@@ -462,10 +462,10 @@ const AllCoaches = () => {
                     />
                   </Col>
                   <Col>
-                    <Form.Label style={{ marginLeft: "80px" }}>
+                    <Form.Label style={{ marginLeft: "103px" }}>
                       Attach ID
                     </Form.Label>
-                    <div style={{ alignSelf: "center", textAlignLast: "end", marginRight: "10px"}}>
+                    <div style={{ alignSelf: "center", textAlignLast: "end", marginRight: "25px"}}>
                       <input
                         style={{paddingTop: "4px", paddingBottom: "4px"}}
                         type="file"
